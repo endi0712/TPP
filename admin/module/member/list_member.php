@@ -1,4 +1,5 @@
 
+        
         <!--**********************************
             Content body start
             ***********************************-->
@@ -32,7 +33,7 @@
                                     <?php 
                                     include "../lib/config.php";
                                     include "../lib/koneksi.php";
-                                    $kueriMember = mysqli_query($koneksi, "select * from tbl_user");
+                                    $kueriMember = mysqli_query($koneksi, "select * from tbl_member");
                                     while ($mem=mysqli_fetch_array($kueriMember)) {
                                      
                                      ?>
@@ -45,7 +46,7 @@
                                         <td>
                                             <div class="btn-group">
                                                  
-                                                <a href="<?php echo $admin_url ;?>module/member/aksi_hapus.php?id_user=<?php  echo $mem['id_user'];?>" onClick ="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                                <a href="<?php echo $admin_url ;?>module/member/aksi_hapus.php?id_member=<?php  echo $mem['id_member'];?>" onClick ="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
                                             </div>
                                         </td>
                                      </tr>
