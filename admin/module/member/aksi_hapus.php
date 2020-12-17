@@ -7,8 +7,8 @@ if(empty($_SESSION['username']) and empty($_SESSION['password'])){
 	include "../../../lib/config.php";
 	include "../../../lib/koneksi.php";
 
-	$idUser = $_GET['id_user'];
-	$queryHapus = mysqli_query($koneksi, "DELETE FROM tbl_user WHERE id_user ='$idUser'");
+	$idMember = $_GET['id_member'];
+	$queryHapus = mysqli_query($koneksi, "DELETE FROM tbl_member WHERE id_member ='$idMember'");
 
 	if ($queryHapus) {
 		echo "<script >alert('Data User Berhasil Dihapus'); window.location = '$admin_url'+'adminweb.php?module=member';</script>	";
