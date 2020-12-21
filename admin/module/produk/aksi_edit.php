@@ -1,11 +1,5 @@
 <?php
-session_start();
-if(empty($_SESSION['username']) and empty($_SESSION['passuser'])){
-	echo "<center>Untuk mengakses modul,Anda harus login<br>";
-	echo "<a href=../../index.php><b>Login</b></a></center";
-}
-else
-{
+ 
 	include "../../../lib/config.php";
 	include "../../../lib/koneksi.php";
 
@@ -61,5 +55,5 @@ else
 					echo "<script>alert('Data Produk Gagal Diubah'); window.location='$admin_url'+'adminweb.php?module=edit_produk&id_produk='+'$idProduk;</script>";
 			}
 	}
-}
+ 
 ?>
