@@ -1,0 +1,287 @@
+.cari {
+	width: 500px;
+	margin: auto;
+}
+.cari input{
+	background-image: url('http://www.clker.com/cliparts/z/1/T/u/9/2/search-icon-hi.png');
+    background-size:35px 35px;
+    background-repeat: no-repeat;
+    text-indent: 40px;
+    background-color: rgba(0, 0, 0, 0.0)
+}
+
+.cari button{
+	background: #a880bd;
+	width: 100px;
+	height: 40px;
+	text-decoration: none;
+	color: white;
+	transition: 0.3s;
+	border: none;
+	margin-left: 10px;
+	margin-top: 8px;
+}
+
+.cari button:hover{
+	background: #B993D6 ;  
+	background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);
+	background: linear-gradient(to right, #8CA6DB, #B993D6) ; 
+	text-decoration: none;
+	color:white;
+	border-radius: 30px;
+	
+}
+.cari input{
+	margin-left: 30px;
+	width: 350px;
+	height: 45px;
+	border: none;
+	 border-bottom: solid 2px rgb(156, 118, 179);
+
+}
+
+
+.option{
+	padding: 10px;
+	margin-top:  20px;
+	margin-left:  20px;
+	/*border:  double  rgb(156, 118, 179);*/
+	background: white;
+	padding-bottom: 80px;
+	
+
+}
+
+.btn-all {
+	border: none;
+	margin:auto;
+	margin-top: 20px;
+	background: #a880bd;
+	text-decoration: none;
+	color: white;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	padding-right: 30px;
+	padding-left: 30px;
+	transition: 0.3s;
+
+}
+
+.btn-all:hover{
+	background: #B993D6 ;  
+	background: -webkit-linear-gradient(to right, #8CA6DB, #B993D6);
+	background: linear-gradient(to right, #8CA6DB, #B993D6) ; 
+	text-decoration: none;
+	color:white;
+	border-radius: 30px;
+	
+}
+
+.imgproduct{
+	margin-left: 4%;
+	width: 400px;
+    height: 400px;
+	overflow: hidden;
+	margin-bottom: 20px;
+	margin-left: 25px;
+	display: block;
+}
+
+.imgprod{
+  position: relative;
+  width: 400px;
+  height: auto;
+  float: left;
+  overflow: hidden;
+
+}
+/*
+.photo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: transform .5s ease-out;
+  }*/
+
+
+
+.imgprod:hover{
+	transform: scale(2);
+}
+.breadcumb{
+	margin-left: 10px;
+	  float: left;
+}
+.breadcumb ul{
+  list-style-type: none;
+
+
+}
+
+.breadcumb li{
+	  display: inline-block;
+}
+.aktif {
+	color: black;
+}
+.br-item{
+	
+	color: grey;	
+}
+
+li:hover  a{
+		text-decoration: none;
+		color: grey;
+}
+
+.btn-angka {
+	border: none;
+	width: 30px;
+	background-color: rgb(156, 118, 179);
+}
+
+.angka input{
+	width: 70px;
+	border: none;
+	border: solid 1px rgb(156, 118, 179);
+}
+
+.angka{
+	display: block;
+	float: left;
+	margin: 10px;
+	margin-top: 10%;
+	margin-left:4%;
+}
+.btn-choice{
+	margin-top: 9%;
+	display: block;
+	float: left;
+	margin-left: 10px;
+}
+.add-to-cart{
+	color: black;
+	padding: 16px;
+	border: solid 2px rgb(156, 118, 179);
+	background-color: rgba(156, 118, 179,0.4);
+	transition: 0.5s;
+
+}
+
+.add-to-cart:hover  {
+	color: black;
+	text-decoration: none;
+}
+
+.add-to-cart:hover  {
+	background-color: rgba(156, 118, 179,0.6);
+
+}
+
+.buy-now{
+	margin-left: 5px;
+	height: 50px;
+	width: 140px;
+	border: none;
+	background-color: rgb(156, 118, 179);
+	padding: 16px;
+
+	transition: 0.5s;
+}
+
+.buy-now {
+		color: white;
+}
+
+.buy-now:hover{
+	background-color: rgba(156, 118, 179,0.9);
+}
+
+.buy-now:hover {
+	color: white;
+	text-decoration: none;
+}
+
+.judul{
+	text-align: left;
+	margin-left: 4%;
+}
+
+.keterangan{
+	text-align: left;
+	margin-left: 4%;
+	margin-right: 30%;
+}
+
+.deskripsi-produk{
+	margin-right:  30px;
+	margin-left: 30px;
+	margin-top: 30px;
+}
+
+.spesifikasi li label{
+	color: grey;
+	margin-right: 30px;
+	width: 80px;
+
+}
+
+.spesifikasi ul{
+	list-style-type: none;
+}
+.spesifikasi li p{
+	display: inline-block;
+
+	
+}
+
+.itemshop{
+	margin-left: 2%
+	margin-top: 40px;
+	margin-right: 2%;
+}
+
+.mainshop{
+	margin-top: 3%;
+}
+
+.kliklogin button{
+	width: auto;
+	width: 400px;
+	height: 40px;
+	position: relative;
+}
+
+
+
+div .send-btn{
+	position: relative;
+}
+
+.klinik img{
+	width: 250px;
+	height: 150px;
+	object-fit: cover;
+}
+
+label{
+	text-align: left;
+	float: left;
+}
+
+.kliksignup button{
+	width: 400px;
+	height: 45px;
+	position: relative;
+
+}
+
+.kliksignup {
+	margin-bottom: 50px;
+}
+
