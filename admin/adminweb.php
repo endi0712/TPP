@@ -312,6 +312,22 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
             elseif ($_GET['module'] == 'review'){
               include "module/review/list_review.php";
             } //.Review
+            elseif ($_GET['module'] == 'metode_bayar'){
+              include "module/metode_bayar/list_metode.php";
+            } //.Metode Bayar
+            elseif ($_GET['module'] == 'keranjang'){
+              include "module/keranjang/list_keranjang.php";
+            } //.Keranjang
+            elseif ($_GET['module'] == 'transaksi'){
+              include "module/transaksi/list_transaksi.php";
+            }elseif ($_GET['module'] == 'edit_transaksi'){
+              include "module/transaksi/form_edit.php";
+            } elseif ($_GET['module'] == 'cetak_transaksi'){
+              include "module/transaksi/cetak_transaksi.php";
+            }//.Transaksi
+            elseif ($_GET['module'] == 'pemesanan'){
+              include "module/pemesanan/list_pemesanan.php";
+            } //.Pemesanan
             else{
               include "module/home/home.php";
             }
@@ -335,14 +351,15 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
                         </a>
                         </li>
                         <li>
-                            <a href="adminweb.php?module=pemesanan">
-                                <i class="fa fa-shopping-cart"></i><span>Pemesanan</span>
+                            <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                                <i class="fa fa-exchange"></i> <span class="nav-text">Transaksi</span>
                             </a>
-                        </li>
-                        <li>
-                            <a href="adminweb.php?module=member">
-                                <i class="fa fa-users"></i><span>Member</span>
-                            </a>
+                            <ul aria-expanded="false">
+                                <li><a href="adminweb.php?module=metode_bayar"><i class="fa fa-credit-card"></i>Metode bayar</a></li>
+                                <li><a href="adminweb.php?module=keranjang"><i class="fa fa-shopping-cart"></i>Keranjang</a></li> 
+                                <li><a href="adminweb.php?module=pemesanan"><i class="fa fa-shopping-cart"></i>Pemesanan</a></li> 
+                                <li><a href="adminweb.php?module=transaksi"><i class="fa fa-exchange"></i>Transaksi</a></li> 
+                            </ul>
                         </li>
                         <li>
                             <a href="adminweb.php?module=review">
