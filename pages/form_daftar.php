@@ -1,37 +1,70 @@
-<!--form-->
-<!-- <section id="form"> -->
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4 col-sm-offset-4">
-					<div class="signup-form"><!--sign up form-->
-						<h2>New User Sign Up</h2>
-						<form action="aksi_daftar.php" method="post">
-							<input type="text" name="username" placeholder="Username" />
-							<input type="password" name="password" placeholder="Password" />
-							<input type="text" name="nama" placeholder="Nama Lengkap"/>
-							<input type="text" name="alamat" placeholder="Alamat" />
+<style type="text/css">
+	.daftar{
+  margin: 0 auto;
+  width:400px;
+}
 
-					        <select class="form-control" name="idkota">
-					          <?php
-					          include "../lib/koneksi.php";
-					          $kueriKota = mysqli_query($koneksi, "SELECT * FROM tbl_kota");
-					          while ($kot=mysqli_fetch_array($kueriKota)){  
-					          ?>
-					          <option value="<?php echo $kot['id_kota']; ?>">
-					            <?php echo $kot['nama_kota']; ?>
-					            </option>
-					          <?php } ?>
-					        </select>							
+.daftar input{
 
-					        <hr>
-							<input type="email" name="email" placeholder="Email Address"/>
-							 
-							<br>
-							<button type="submit" class="btn btn-default">Signup</button>
-						</form>
-					</div><!--/login form-->
-				</div>
+  width: 400px;
+}
+</style>
+
+<main>
+	<section>
+		<h1><center>DAFTAR</center></h1>
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-sm-12">
+				 <div class="daftar">
+				<form action="aksi_daftar.php" method="post">
+					<div class="form-group">	
+						<label class="col-form-label">Nama Lengkap</label>				
+						<input type="text" class="form-control"  placeholder="Masukkan Nama Lengkap" name="nama">
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label">Email</label>	
+						<input type="text" class="form-control"  placeholder="example@example.com" name="email">
+					</div>
+
+					<div class="form-group">
+						<label class="col-form-label">Telepon</label>	
+						<input type="text" class="form-control"  placeholder="Masukan Nomor Telepon" name="notelp">
+					</div>
+				
+						<div class="form-group">
+							<label class="col-form-label">Alamat</label>
+								<input type="text" class="form-control"  placeholder="Masukkan Alamat" name="alamat" required>
+							</div>
+
+							<div class="form-group">
+							<label class="col-form-label">Kota</label>
+							<select class="custom-select" name="idKota">
+									<?php 
+									include "lib/koneksi.php"; 
+									$kueriKota = mysqli_query($koneksi, "SELECT * FROM tbl_kota");
+									while($kot=mysqli_fetch_array($kueriKota)){
+										?>
+										<option value="<?php echo $kot['id_kota']; ?>"><?php echo $kot['nama_kota']; ?></option>
+									<?php  }?>
+								</select>
+							</div>
+							<hr>
+							<div class="form-group">
+							<label class="col-form-label">Username</label>
+							<input type="text" class="form-control"  placeholder="Masukkan Username" name="username" >
+							</div>
+							<div class="form-group">
+							<label class="col-form-label">Password</label>
+							<input type="password" class="form-control"  placeholder="Masukkan Password" name="password" >
+							</div>
+
+							<div class="kliksignup">
+								<button type="submit" class="btn-more">SIGN UP</button>
+							</div>
+				</form>
+			</div>
 			</div>
 		</div>
-<!-- 	</section> -->
-<!--/form-->
+	</section>
+</main>

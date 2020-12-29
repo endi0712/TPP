@@ -78,7 +78,7 @@
                                                 <h2>Reviews</h2>
                                                 <form action="aksi_review.php" method="post">
                                                 <div class="submit-review">
-                                                    <p><label for="name">Id user</label> <input name="id_user" id="id_user" type="text"></p>
+                                                    <p><label for="name">User</label> <input name="id_user" id="id_user" type="text"></p>
                                                     <p><label for="review">Your review</label> <textarea name="isi" id="" cols="30" rows="10"></textarea></p>
                                                     <p><label for="tgl_review">Tanggal</label><input type="date" id="tgl_review" name="tgl_review"></p>  
                                                     <p><input type="submit" value="Submit"></p>

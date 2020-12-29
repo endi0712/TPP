@@ -1,158 +1,232 @@
-<?php 
-$sid = session_id();  
-?>	
-	<section id="cart_items">
-		<div class="container">
-			<div class="breadcrumbs">
-				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
-				</ol>
-			</div>
-			<div class="table-responsive cart_info">
-				<table class="table table-condensed">
-					<thead>
-						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description">Name</td>
-							<td class="price">Price</td>
-							<td class="quantity">Quantity</td>
-							<td class="total">Total</td>
-							<td></td>
-						</tr>
-					</thead>
-					<tbody>
-						<?php 
+ <head>
+ 	
+ 	
+ 	<style type="text/css">
+ 		.penerima{
+ 			background-color: rgba(241, 240, 242,0.3);
+ 			width: 400px;
+ 			margin: auto;
+ 			height: auto;
+ 			padding: 30px;
+ 			margin-bottom: 70px;
+ 		}
 
-						if(!empty($_SESSION['idMember'])){
-					      $id = $_SESSION['idMember'];
-					      $queryMember = mysqli_query($koneksi,  "SELECT * FROM tbl_member WHERE id_member = '$id'");
-					      $hasil=mysqli_fetch_array($queryMember);
-					      $kotaM = $hasil['id_kota'];
+ 		.rincian{
+ 			width: 400px;
+ 			margin-left: 10%;
+ 		}
 
-					      $query = mysqli_query($koneksi,  "SELECT * FROM tbl_keranjang o INNER JOIN tbl_produk p ON o.id_produk = p.id_produk WHERE (o.id_member = '$id' OR o.id_session = '$sid') AND o.status = 'P' ");
-					     }else{
-					      $query = mysqli_query($koneksi,  "SELECT * FROM tbl_keranjang o INNER JOIN tbl_produk p ON o.id_produk = p.id_produk WHERE o.id_session = '$sid' AND o.status='P'");
-     						}
-							$total = 0;
-							while ($d=mysqli_fetch_array($query)){
-								$total += $d['harga']*$d['jumlah'];
-								$subtotal = $d['harga']*$d['jumlah'];
-						 ?>
-						<tr>
-							<td class="cart_product">
-								<a href=""><img src="admin/upload/<?php echo $d['gambar']; ?>" alt=""></a>
-							</td>
-							<td class="cart_description">
-								<h4><a href=""><?php echo $d['nama_produk']; ?></a></h4>
-							</td>
-							<td class="cart_price">
-								<p>Rp. <?php echo number_format($d['harga']); ?></p>
-							</td>
-							<td class="cart_quantity">
-								<?php echo $d['jumlah']; ?>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price"><?php echo $subtotal; ?></p>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-					<?php } ?>
-						<tr>
-							<td colspan="4">&nbsp;</td>
-							<td colspan="2">
-								<table class="table table-condensed total-result">
-									<tr>
-										<td>Total Belanja</td>
-										<td>Rp. <?php echo number_format($total); ?></td>
-									</tr>
-									<tr class="shipping-cost">
-										<td>Biaya Kirim</td>
-										<td><?php 
-										if(!empty($_SESSION['biaya_kirim'])){
-											echo "Rp. ".$_SESSION['biaya_kirim'];
-										}else{
-											echo "Belum memilih kurir";
-										}
-										 ?></td>							
-									</tr>
-									<tr>
-										<td>Total Bayar</td>
-			<td><span>Rp. <?php $total_bayar = $total+$_SESSION['biaya_kirim']; echo number_format($total_bayar); ?></span></td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-    		<div class="row">  	
-	    		<div class="col-sm-8">
-	    			<div class="contact-form">
-	    				<h2 class="title text-center">Pilih Kurir</h2>
-	    				<div class="status alert alert-success" style="display: none"></div>
-				    	<form id="main-contact-form" class="contact-form row" name="contact-form" method="post" action="pilihkurir.php">
+ 		.kurir{
+ 			width: 400px;
+ 		}
 
-				            <div class="form-group col-md-6">
-				            	<select name="id_kurir" class="form-control">
-				            		<?php 
-				            		$getKurir = mysqli_query($koneksi, "SELECT * FROM tbl_kurir");
-				            		while ($itemKurir = mysqli_fetch_array($getKurir)) {
-				            		 ?>
-				            		 <option value="<?php echo $itemKurir['id_kurir'] ?>" >
-				            		 	<?php echo $itemKurir['nama_kurir']; ?>
-				            		 </option>
-				            		<?php } ?>
-				            	</select>
-				            </div>
+ 		.total li{
+ 			list-style: none;
+ 			text-align: left;
+ 		}
 
-				            <div class="form-group col-md-12">
-				                <input type="submit" name="submit" class="btn btn-primary pull-right" value="Pilih kurir">
-				            </div>                   
-				        </form>
-	    			</div>
-	    		</div>
-	    	</div>
-	    	<?php 
-				$idMember = $_SESSION['idMember'];
-				$queryGetProfilMember = mysqli_query($koneksi, "SELECT * FROM tbl_member WHERE id_member = $idMember");
-				$res = mysqli_fetch_array($queryGetProfilMember);
+ 		.total li b{
+ 			margin-right: 40%;
+ 			display: inline-block;
+ 		}
 
-	    	 ?>
-    		<div class="row">  	
-	    		<div class="col-sm-8">
-	    			<div class="contact-form">
-	    				<h2 class="title text-center">Data Penerima</h2>
-	    				<div class="status alert alert-success" style="display: none"></div>
-				    	<form id="main-contact-form" class="contact-form row" name="contact-form" method="post">
-				            <div class="form-group col-md-6">
-				                <input type="text" name="name" class="form-control" required="required" placeholder="Nama" value="<?php echo $res['nama']; ?>" disabled>
-				            </div>
-				            <div class="form-group col-md-6">
-				                <input type="email" name="email" class="form-control" required="required" placeholder="Email" value="<?php echo $res['email']; ?>" disabled>
-				            </div>
-				            <div class="form-group col-md-6">
-				                <input type="text" name="email" class="form-control" required="required" placeholder="Nomor Handphone" value="<?php echo $res['nohp']; ?>" disabled>
-				            </div>
-				            <div class="form-group col-md-6">
-				            	<select name="idKota" class="form-control" disabled>
-				            		<?php 
-				            		$getKota = mysqli_query($koneksi, "SELECT * FROM tbl_kota");
-				            		while ($itemKota = mysqli_fetch_array($getKota)) {
-				            		 ?>
-				            		 <option value="<?php echo $itemKota['id_kota']; ?>" ><?php echo $itemKota['nama_kota']; ?></option>
-				            		<?php } ?>
-				            	</select>
-				            </div>				            
-				            <div class="form-group col-md-12">
-				                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="Your Message Here" disabled><?php echo $res['alamat']; ?></textarea>
-				            </div>                        
-				        </form>
-				        <a href="terimakasih.php"><button name="submit" class="btn btn-primary pull-right">Selesai</a>
-	    			</div>
-	    		</div>
-	    	</div>	    				
-		</div>
-	</section> <!--/#cart_items-->
+ 		.total li span {
+ 			text-align: right;
+
+ 		}
+
+ 		td input{
+ 			text-align: right;
+ 			border: none;
+ 			background-color: white;
+ 		}
+ 	</style>
+ </head>
+
+ 
+
+ <?php 
+
+ include "lib/config.php";
+ include "lib/koneksi.php";
+ if(!empty($_POST['chkbox'])){
+
+
+ 	
+
+ 	
+ 	if(isset($_POST["checkout"])){
+// foreach($_POST['chkbox'] as $selected){
+//                  // echo "Anda memilih $selected<br/>";
+// 				$idCart.=$selected.", ";
+
+//             }
+
+
+ 		$idCart = implode(",", $_POST['chkbox']);
+ 	}
+
+ 	$idCust = $_SESSION['idCustomer'];
+ 	
+
+
+
+ 	?>
+
+ 	<main>
+ 		<div class="row">
+ 			<div class="col-lg-12 col-md-12 col-sm-12">
+ 				<form name="pilih" method="post" action="aksi_order.php">
+ 					<?php 
+ 					$queryCustomer = mysqli_query($koneksi,  "SELECT *, K.nama_kota as kota FROM tbl_customer C INNER JOIN tbl_kota K ON C.id_kota = K.id_kota WHERE id_customer = '$idCust' ");
+
+
+ 					while ($cust=mysqli_fetch_array($queryCustomer)){
+ 						$idkota = $cust['id_kota'];
+ 						?>
+
+
+
+ 						<div class="penerima">
+ 							<h5>Alamat Pengiriman : </h5>
+ 							<p><?php echo $cust['nama'] ; echo " || " ; echo $cust['alamat'];?></p>
+ 							<p><?php echo $cust['notelp'] ;?></p>
+ 							<p><?php echo $cust['kota'] ;?></p>
+ 						</div>
+ 					<?php }
+
+
+ 					?>
+
+ 				</div>
+ 				<div class="col-lg-6 col-md-6 col-sm-12 " >
+ 					<?php 
+ 					$totalproduk = 0;
+ 					$query = mysqli_query($koneksi,  "SELECT K.id_keranjang, P.id_produk, P.gambar, P.nama_produk, P.deskripsi, P.harga, K.jumlah FROM tbl_keranjang K INNER JOIN tbl_produk P ON K.id_produk = P.id_produk WHERE K.id_keranjang IN ($idCart)");
+
+ 					    while ($cart=mysqli_fetch_array($query)){ 
+
+ 						$subtotalproduk= $cart['jumlah'] * $cart['harga'];
+ 						$totalproduk = $totalproduk + $subtotalproduk;
+ 						?>
+ 						<input type="checkbox" name="idkeranjang[]" value="<?php echo $cart['id_keranjang'] ?>" checked hidden>
+ 						<input type="checkbox" name="idproduk[]" value="<?php echo $cart['id_produk'] ?>" checked hidden>
+ 						<input type="checkbox" name="jumlah[]" value="<?php echo $cart['jumlah'] ?>" checked hidden>
+ 						<input type="checkbox" name="harga[]" value="<?php echo $cart['harga'] ?>" checked hidden>
+ 						<input type="checkbox" name="total[]" value="<?php echo $subtotalproduk ?>" checked hidden>
+ 						<table class="table table-sm  rincian" >
+ 							<tbody align="left">
+ 								<tr align="center">
+ 									<td rowspan="3"><img src="admin/upload/<?php echo $cart['gambar'] ?>" width="100"></td>
+ 								</tr>
+ 								<tr>
+ 									<td><?php echo "<b>". $cart['nama_produk'];echo "<br> @Rp. "; echo number_format($cart['harga']); echo "<br>Jumlah : ". $cart['jumlah']; ?></td>
+ 								</tr>
+ 								<tr>
+ 									<td align="right"><h6>Rp. <?php echo number_format($subtotalproduk) ;?> </h6> </td>
+ 								</tr>
+
+
+
+ 							</tbody>
+ 						</table>
+ 					<?php } ?>
+ 				</div>
+ 				<div class="col-lg-6 col-md-6 col-sm-12">
+ 					<div class="kurir">
+
+ 						<div class="input-group mb-3 ml-3">
+
+ 							<div class="input-group-prepend">
+ 								<label class="input-group-text" for="inputGroupSelect01">Kurir</label>
+ 							</div>
+
+ 							<select class="custom-select" name="idKurir" id="kurir" onchange="getSelect();">
+ 								<option disabled selected>--Pilih Kurir--</option>
+ 								<?php 
+ 								include "lib/koneksi.php"; 
+ 								$kueriKurir = mysqli_query($koneksi, "SELECT *, k.nama_kurir as kurir FROM tbl_biaya_kirim b INNER JOIN tbl_kurir k ON b.id_kurir = k.id_kurir WHERE id_kota  = '$idkota'");
+ 								while($kur=mysqli_fetch_array($kueriKurir)){
+ 									?>
+
+ 									<option value="<?php echo $kur['id_biaya_kirim']; ?>"><?php echo $kur['kurir']; echo "     Rp. " . number_format($kur['biaya']);?></option>
+ 									<?php   $biayakurir = $kur['biaya']; }?>
+
+ 								</select>
+ 							</div>
+
+ 							
+
+
+ 							<div class="input-group mb-3 ml-3 ">
+
+ 								<div class="input-group-prepend">
+ 									<label class="input-group-text" for="inputGroupSelect01">Metode Bayar</label>
+ 								</div>
+ 								
+ 								<select class="custom-select" id="bank" name="metodeBayar">
+ 									<?php $kueri = mysqli_query($koneksi, "SELECT * FROM tbl_metode_bayar");
+ 								while($mtd=mysqli_fetch_array($kueri)){
+ 									 ?>
+ 									<option value="<?php echo $mtd['id_metode_bayar']; ?>"><?php echo $mtd['nama_metode']; ?></option>
+
+ 								<?php } ?>
+ 								</select>
+
+ 							</div>
+
+ 							<div class="total ml-4">
+ 								<input type="text" name="totalTagihan" id="totalTagihan" hidden>
+ 								<table>
+ 									<tr>
+ 										<td align="left"><b>Subtotal Produk</b></td>
+ 										<td width="200" align="right" >Rp. <?php echo number_format($totalproduk); ?> <span hidden id="totalproduk"><?php echo number_format($totalproduk); ?></span></td>
+ 									</tr>
+ 									<tr>
+ 										<td  align="left"><b>Subtotal Pengiriman</b></td>
+ 										<td align="right"><input type="text"  disabled id="biaya" name="biaya_kirim"></td>
+ 									</tr>
+ 									<tr>
+ 										<td  align="left"><b>Total Pembayaran</b></td>
+ 										<td align="right"><input type="text"  disabled id="totalall"></td>
+ 									</tr>
+ 									<tr>
+ 										
+ 										<td colspan="2"><button type="submit" class="btn-all">Buat Pesanan</button></td>
+ 									</tr>
+ 								</table>
+
+
+ 							</div>
+ 						</form>
+
+ 					</div>
+ 				</div>
+
+ 			</div>
+
+ 		<?php }else{
+ 			echo"<script>alert('Pilih produk terlebih dahulu!'); window.location = 'keranjang.php';</script>	";
+ 		} 
+ 		?>
+ 	</main>
+
+ 	<script type="text/javascript">
+ 		function getSelect(){
+ 			var d = document.getElementById("kurir");
+ 			var selectv = d.options[d.selectedIndex].text;
+ 			var kirim = parseFloat(selectv.slice(-6));
+ 			var totalpro = parseFloat('<?php echo $totalproduk; ?>');
+ 			var total = totalpro + (kirim * 1000);
+ 			document.getElementById("biaya").value = selectv.slice(-10);
+ 			document.getElementById("totalall").value = "Rp. " + total.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g,'$1,');
+ 			document.getElementById("totalTagihan").value = total;
+ 		}
+
+	/*function getSelect(){
+		document.getElementById("biaya").innerHTML ={
+			"<b>".pilih.kurir[pilih.kurir.selectedIndex].text"</b"
+		}
+	}*/
+	
+</script>

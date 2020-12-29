@@ -2,11 +2,7 @@
 	.kategori label{
 		margin-left: 20px;
 	}
-
-	
 </style>
-
-
 <main>
 	<div class="row">
 		<div class="col-lg-2">
@@ -17,26 +13,20 @@
 						include "lib/koneksi.php"; 
 						$q = mysqli_query($koneksi, "SELECT * FROM tbl_kategori");
 						while($kat=mysqli_fetch_array($q)){
-							
-							
 							?>
-							
 							<label class="container">
 
 								<input type="checkbox" name="chkbox[]" class="custom-control-input" value="<?php echo $kat['id_kategori']; ?>" checked>
 								<span class="checkmark"></span>
 								<label><?php echo $kat['nama_kategori']; ?></label>
 							</label>
-						
-						<?php 
-							
-
-						} ?>
-						
-								
-
+						<?php } ?>
 					</div>
+
 					 
+					<div>
+						<button type="submit" class="btn-more">Cari</button>
+					</div>
 				</form>
 			</div>
 
@@ -58,13 +48,14 @@
 
 				<div class="row">
 					<?php 
+					$key = $_POST['search'];
 					$halaman = 6;
 					$page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
 					$mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
-					$result = mysqli_query($koneksi,"SELECT * FROM tbl_produk");
+					$result = mysqli_query($koneksi,"SELECT * FROM tbl_produk WHERE nama_produk LIKE '%$key%' OR deskripsi LIKE '%$key%' ");
 					$total = mysqli_num_rows($result);
 					$pages = ceil($total/$halaman);  
-					$q = mysqli_query($koneksi, "SELECT * FROM tbl_produk order by id_produk desc limit $mulai, $halaman");
+					$q = mysqli_query($koneksi, "SELECT * FROM tbl_produk WHERE nama_produk LIKE '%$key%' OR deskripsi LIKE '%$key%' order by id_produk desc limit $mulai, $halaman");
 					while($r=mysqli_fetch_array($q)){ ?>
 						<div class="col-lg-4 col-md-4 col-sm-6" >
 							<div class="shopitem">
@@ -72,7 +63,7 @@
 								<p class="title" ><?php echo $r['nama_produk'] ?></p>
 								<p class="price">Rp. <?php echo number_format($r['harga']) ?></p>
 								<div class="overlay"></div>
-								<div class="btn-buy"> <a href="petshopitem.php?id_produk=<?php echo $r['id_produk'];?>" >ADD TO CART</a> </div>
+								<div class="btn-buy"> <a href="shopitem.php?id_produk=<?php echo $r['id_produk'];?>" >ADD TO CART</a> </div>
 
 							</div>
 							
@@ -108,5 +99,3 @@
 </div>
 
 </main>
-
-
