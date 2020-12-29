@@ -1,5 +1,5 @@
 <?php
 include "template/header.php";
-include "pages/keranjang.php";
+include "pages/ubah_password.php";
 include "template/footer.php";
 ?> 
