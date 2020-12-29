@@ -24,7 +24,7 @@
                                     <tr>
                                         <th>Pengirim</th>
                                         <th>Pesan</th>
-                                        <th>Tanggal</th>
+                                         
                                     </tr>
                                     <?php 
                                     include "../lib/config.php";
@@ -34,16 +34,9 @@
                                      
                                      ?>
                                      <tr>
-                                        <td>
-                                        <?php
-                                        $kueriMember = mysqli_query($koneksi, "SELECT * FROM tbl_user"); 
-                                        while ($mem = mysqli_fetch_array($kueriMember)) {
-                                        if($rev['id_user'] == $mem['id_user']){
-                                          echo $mem['nama'];}
-                                        }?>
-                                        </td>
+                                        <td><?php echo $rev['pengirim']; ?></td> 
                                         <td><?php echo $rev['isi']; ?></td>
-                                        <td><?php echo $rev['tgl_review']; ?></td> 
+                                        
                                      </tr>
                                 <?php  } ?>
                             </table>
