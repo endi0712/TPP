@@ -1,6 +1,4 @@
-
-        
-        <!--**********************************
+<!--**********************************
             Content body start
             ***********************************-->
             <div class="content-body">
@@ -26,32 +24,37 @@
                                         <th>Username</th>
                                         <th>Password</th>
                                         <th>Nama</th>
-                                        <th>Alamat</th>
                                         <th>Email</th>
-                                        <th style="width: 110px">Aksi</th>
-                                    </tr>
-                                    <?php 
-                                    include "../lib/config.php";
-                                    include "../lib/koneksi.php";
-                                    $kueriMember = mysqli_query($koneksi, "select * from tbl_member");
-                                    while ($mem=mysqli_fetch_array($kueriMember)) {
-                                     
-                                     ?>
-                                     <tr>
-                                        <td><?php echo $mem['username']; ?></td>
-                                        <td><?php echo $mem['password']; ?></td>
-                                        <td><?php echo $mem['nama']; ?></td>
-                                        <td><?php echo $mem['alamat']; ?></td>
-                                        <td><?php echo $mem['email']; ?></td>  
+                                        <th>Alamat</th>
+                                        <th>Kota</th>
+                                        <th>No Telp</th>   
+                                      </tr>
+                                      <?php 
+                                      include "../lib/config.php";
+                                      include "../lib/koneksi.php";
+                                      $kueriCustomer = mysqli_query($koneksi, "SELECT * from tbl_customer");
+                                      while ($cus=mysqli_fetch_array($kueriCustomer)) {
+                                       
+                                       ?>
+                                       <tr>
+                                        <td><?php echo $cus['username']; ?></td>
+                                        <td><?php echo $cus['password']; ?></td>
+                                        <td><?php echo $cus['nama']; ?></td>
+                                        <td><?php echo $cus['email']; ?></td>
+                                        <td><?php echo $cus['alamat']; ?></td>
                                         <td>
-                                            <div class="btn-group">
-                                                 
-                                                <a href="<?php echo $admin_url ;?>module/member/aksi_hapus.php?id_member=<?php  echo $mem['id_member'];?>" onClick ="return confirm('Anda yakin ingin menghapus data ini?')" class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
-                                            </div>
+                                            <?php 
+                                            include "../lib/koneksi.php"; 
+                                            $kueriKota = mysqli_query($koneksi, "SELECT * FROM tbl_kota");
+                                            while($kot=mysqli_fetch_array($kueriKota)){ 
+                                            if ($cus['id_kota'] == $kot['id_kota']) 
+                                            {echo $kot['nama_kota'];}}?>       
                                         </td>
-                                     </tr>
-                                <?php  } ?>
-                            </table>
+                                        <td><?php echo $cus['notelp'];?></td> 
+                                       </tr>
+                                    <?php  } ?>
+                                    </table>
+                            
                             <div class="box-footer">
                                
                           </div>
