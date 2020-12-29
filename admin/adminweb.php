@@ -328,6 +328,9 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
             elseif ($_GET['module'] == 'pemesanan'){
               include "module/pemesanan/list_pemesanan.php";
             } //.Pemesanan
+            elseif ($_GET['module'] == 'item_transaksi'){
+              include "module/item_transaksi/list_item.php";
+            }//.item
             else{
               include "module/home/home.php";
             }
