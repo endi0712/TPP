@@ -34,7 +34,7 @@
                         <?php 
                         include "../lib/config.php";
                         include "../lib/koneksi.php";
-                        $halaman = 10;
+                        $halaman = 5;
                         $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
                         $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
                         $result = mysqli_query($koneksi,"SELECT * FROM tbl_transaksi");
@@ -101,6 +101,25 @@
                       </tr>
                     <?php  } ?>
                   </table>
+                   <nav aria-label="Page navigation" style="margin-left: 35%">
+                              <ul class="pagination justify-content-right">
+
+                                <li class="page-item <?php if ($page == 1) {echo 'disabled';}?>">
+                                  <a class="page-link" href="?module=transaksi&halaman=<?php echo $page - 1; ?>" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+
+                                <?php 
+                                for ($i=1; $i<=$pages ; $i++){
+                                  ?>
+                                  <li class="page-item <?php if ($i == $page) {echo 'disabled';}?> "><a class="page-link" href="?module=transaksi&halaman=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                <?php } ?>
+
+                                <li class="page-item <?php if ($page == $pages) {echo 'disabled';}?>">
+                                  <a class="page-link" href="?module=transaksi&halaman=<?php echo $page + 1; ?>">Next</a>
+                                </li>
+
+                              </ul>
+                            </nav>
 
                   <div class="box-footer">
 
