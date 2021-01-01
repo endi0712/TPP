@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if(empty($_SESSION['username']) and empty($_SESSION['passuser'])){
+if(empty($_SESSION['username']) and empty($_SESSION['password'])){
 	echo "<center>Untuk mengakses modul, Anda harus login <br>" ;
 	echo "<a href= .../../index.php ><b>login</b></a></center>";
 }else{
@@ -22,4 +22,4 @@ if(empty($_SESSION['username']) and empty($_SESSION['passuser'])){
 
 }
 
-?>
+?> 
