@@ -1,4 +1,4 @@
-        <!--**********************************
+ <!--**********************************
             Content body start
             ***********************************-->
             <div class="content-body">
@@ -17,7 +17,7 @@
 	<h1 align="center">E-UKM Kalurahan Gedangrejo <img src="upload/gkk.png" width="50"></h1>
 	<div class="row">
 		<div class="col-xs-12">
-			<div class="box">
+			<div class="box" id="printArea">
 
 				<?php  			
 
@@ -181,9 +181,7 @@
 </div>
 
 
-		<script>
-			window.print();
-		</script>
+		
 
 <div class="container-fluid">
                 <div class="row">
@@ -191,7 +189,8 @@
                         <div class="card">
                             <div class="card-body">
                                  <div class="box-footer">
-                               
+                               <button class="btn btn-primary" id="cetak" onclick="cetak()">Cetak</button>
+                           </div>
                           </div>
                       </div>
                   </div>
@@ -203,3 +202,14 @@
         <!--**********************************
             Content body end
         ***********************************-->
+<script>
+	 
+
+        function cetak(){
+            var printContents = document.getElementById("printArea").innerHTML;
+            var original = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = original;
+        }
+</script>
