@@ -371,6 +371,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
                         </li>
                         <?php } else { ?>
                         <li>
+                            <a href="adminweb.php?module=home">
+                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
+                            </a>
+                        </li>    
+                        <li>
                          <a href="adminweb.php?module=kategori">
                             <i class="fa fa-bars"></i><span>Kategori</span>
                         </a>
