@@ -1,5 +1,4 @@
-
-        <!--**********************************
+ <!--**********************************
             Content body start
             ***********************************-->
             <div class="content-body">
@@ -28,7 +27,13 @@
                                     <?php 
                                     include "../lib/config.php";
                                     include "../lib/koneksi.php";
-                                    $kueriKurir = mysqli_query($koneksi, "select * from tbl_kurir");
+                                    $halaman = 5;
+                                    $page = isset($_GET["halaman"]) ? (int)$_GET["halaman"] : 1;
+                                    $mulai = ($page>1) ? ($page * $halaman) - $halaman : 0;
+                                    $result = mysqli_query($koneksi,"SELECT * FROM tbl_kurir");
+                                    $total = mysqli_num_rows($result);
+                                    $pages = ceil($total/$halaman);  
+                                    $kueriKurir = mysqli_query($koneksi, "select * from tbl_kurir limit $mulai, $halaman");
                                     while ($kur=mysqli_fetch_array($kueriKurir)) {
                                      
                                      ?>
@@ -43,6 +48,25 @@
                                      </tr>
                                 <?php  } ?>
                             </table>
+                            <nav aria-label="Page navigation" style="margin-left: 35%">
+                              <ul class="pagination justify-content-right">
+
+                                <li class="page-item <?php if ($page == 1) {echo 'disabled';}?>">
+                                  <a class="page-link" href="?module=kurir&halaman=<?php echo $page - 1; ?>" tabindex="-1" aria-disabled="true">Previous</a>
+                                </li>
+
+                                <?php 
+                                for ($i=1; $i<=$pages ; $i++){
+                                  ?>
+                                  <li class="page-item <?php if ($i == $page) {echo 'disabled';}?> "><a class="page-link" href="?module=kurir&halaman=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                                <?php } ?>
+
+                                <li class="page-item <?php if ($page == $pages) {echo 'disabled';}?>">
+                                  <a class="page-link" href="?module=kurir&halaman=<?php echo $page + 1; ?>">Next</a>
+                                </li>
+
+                              </ul>
+                            </nav>
                             <div class="box-footer">
                               <a href="<?php echo $base_url; ?>admin/adminweb.php?module=tambah_kurir"><button class="btn btn-primary ">Tambah Kurir</button></a>
                           </div>
