@@ -24,9 +24,6 @@
 					</div>
 
 					 
-					<div>
-						<button type="submit" class="btn-more">Cari</button>
-					</div>
 				</form>
 			</div>
 
