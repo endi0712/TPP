@@ -52,8 +52,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
             ***********************************-->
             <div class="nav-header">
                 <div class="brand-logo">
-                    <a href="index.html">
-                        <b class="logo-abbr"><img src="images/logo.png" alt=""> </b>
+                    <a href="index.php">
+                        <b class="logo-abbr"><img src="images/gkk.png" alt=""> </b>
                         <span class="logo-compact"><img src="assets/images/logo-compact.png" alt=""></span>
                         <span class="brand-title">
                             <img src="images/logo-text.png" alt="">
@@ -331,6 +331,12 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
             elseif ($_GET['module'] == 'item_transaksi'){
               include "module/item_transaksi/list_item.php";
             }//.item
+            elseif ($_GET['module'] == 'admin'){
+              include "module/admin/list_admin.php";
+            }//.Admin
+            elseif ($_GET['module'] == 'konfirmasi'){
+              include "module/konfirmasi/list_konfirmasi.php";
+            }//.Admin
             else{
               include "module/home/home.php";
             }
@@ -341,13 +347,7 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
             <div class="nk-sidebar">           
                 <div class="nk-nav-scroll">
                     <ul class="metismenu" id="menu">
-                        <li class="nav-label">Dashboard</li>
                         <?php if($_SESSION['level']=='P'){?>
-                        <li>
-                            <a href="adminweb.php?module=home">
-                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                            </a>
-                        </li>
                         <li>
                          <a href="adminweb.php?module=produk">
                             <i class="fa fa-th"></i><span>Produk</span>
@@ -361,7 +361,8 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
                                 <li><a href="adminweb.php?module=metode_bayar"><i class="fa fa-credit-card"></i>Metode bayar</a></li>
                                 <li><a href="adminweb.php?module=keranjang"><i class="fa fa-shopping-cart"></i>Keranjang</a></li> 
                                 <li><a href="adminweb.php?module=pemesanan"><i class="fa fa-shopping-cart"></i>Pemesanan</a></li> 
-                                <li><a href="adminweb.php?module=transaksi"><i class="fa fa-exchange"></i>Transaksi</a></li> 
+                                <li><a href="adminweb.php?module=transaksi"><i class="fa fa-exchange"></i>Transaksi</a></li>
+                                <li><a href="adminweb.php?module=konfirmasi"><i class="fa fa-file-o"></i>Konfirmasi pembayaran</a></li> 
                             </ul>
                         </li>
                         <li>
@@ -370,11 +371,6 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
                             </a>
                         </li>
                         <?php } else { ?>
-                        <li>
-                            <a href="adminweb.php?module=home">
-                                <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
-                            </a>
-                        </li>    
                         <li>
                          <a href="adminweb.php?module=kategori">
                             <i class="fa fa-bars"></i><span>Kategori</span>
@@ -399,6 +395,11 @@ if (empty($_SESSION['username']) AND empty($_SESSION['password']) ) {
                         <li>
                             <a href="adminweb.php?module=pemilik">
                                 <i class="fa fa-users"></i><span>Pemilik UKM</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="adminweb.php?module=admin">
+                                <i class="fa fa-user"></i><span>Admin</span>
                             </a>
                         </li>
                         <?php } ?>    
