@@ -70,6 +70,7 @@
 							<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 								<a class="dropdown-item" href="profil.php">Profil</a>
 								<a class="dropdown-item" href="riwayat.php">Riwayat</a>
+								<a class="dropdown-item" href="konfirmasi.php">Konfirmasi Pembayaran</a>
 								<a class="dropdown-item" href="ubah_password.php">Ubah Password</a>
 								<a class="dropdown-item" href="aksi_logout.php">Keluar</a>
 							</div>
