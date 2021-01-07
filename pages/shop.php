@@ -72,7 +72,7 @@
 								<p class="title" ><?php echo $r['nama_produk'] ?></p>
 								<p class="price">Rp. <?php echo number_format($r['harga']) ?></p>
 								<div class="overlay"></div>
-								<div class="btn-buy"> <a href="shopitem.php?id_produk=<?php echo $r['id_produk'];?>" >ADD TO CART</a> </div>
+								<div class="btn-buy"> <a href="shopitem.php?id_produk=<?php echo $r['id_produk'];?>" >BUY</a> </div>
 
 							</div>
 							
