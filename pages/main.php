@@ -2,12 +2,10 @@
 
 	<div style="background-image: url(assets/img/tas.jpg) ; background-repeat: no-repeat; object-fit: cover; height: 700px;">
 		<div class="jumbotron" style="background: none">
-			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, <br> sed do eiusmod
-				tempor incididunt ut labore et <br>dolore magna aliqua. Ut enim ad minim veniam,
-			</p>
-			<h1>DCARE</h1>
+			 
+			<h1>E-UKM Kalurahan Gedangrejo</h1>
 			<div class="btn-login" style="width: 150px">
-				<a  href="petshop.php">SHOP NOW</a>
+				<a  href="shop.php">SHOP NOW</a>
 			</div>
 
 		</div>
@@ -19,14 +17,12 @@
 				<div class="col-lg-4 col-md-4 col-sm-12 isi">
 					<img src="assets/img/home.png" width="80px">
 					<h3>HOME</h3>
-					<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					 
 				</div>
 				<div class="col-lg-4 col-md-4 col-sm-12 isi1">
 					<img src="assets/img/cart.png" width="80px">
 					<h3>SHOPPING PAGE</h3>
-					<p class="text-justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+					 
 				</div>
 				 
 			</div>
@@ -46,7 +42,7 @@
 				<h4 style="color:salmon;">SALE</h4>
 
 				<h1>45%</h1>
-				<button class="btn btn-warning" onclick="location.href='petshop.php'">CHECK IT NOW</button>		
+				<button class="btn btn-warning" onclick="location.href='shop.php'">CHECK IT NOW</button>		
 			</div>
 			<div class="col-lg-3 col-md-3 col-sm-6 info3" >
 				<img src="assets/img/gajah.jpg">		
