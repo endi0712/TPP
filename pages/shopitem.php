@@ -9,7 +9,7 @@
 		<div class="col-lg-4 col-md-6 col-sm-12">
 			<div class="breadcumb">
 				<ul>
-					<li><a href="" class="br-item">Petshop</a> / </li>
+					<li><a href="" class="br-item">Shop</a> / </li>
 					<li><a href="" class="br-item">Category</a> / </li> 
 					<li ><a href="" class="aktif">Shopping item</a></li>
 				</ul>
