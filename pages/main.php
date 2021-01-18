@@ -24,7 +24,11 @@
 					<h3>SHOPPING PAGE</h3>
 					 
 				</div>
-				 
+				<div class="col-lg-4 col-md-4 col-sm-12 isi">
+					<img src="assets/img/home.png" width="80px">
+					<h3>MARKET'S</h3>
+					 
+				</div> 
 			</div>
 		</div>
 	</div>	
