@@ -103,8 +103,10 @@
 					<ul>
 						<li><img src="assets/img/gkk.png"  width="70" class="mx-auto d-block" onclick="location.href='index.php';"></li>
 						<li><a href="shop.php">SHOP PAGES</a></li> 
+						<li><a href="toko.php">MARKET'S</a></li>
 					</ul>
 				</div>
+
 
 
 			</header>
